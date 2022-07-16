@@ -3,7 +3,7 @@ kind: Deployment
 metadata:
   name: aftest-deployment
 spec:
-  replicas: 2
+  replicas: 12
   selector:
     matchLabels:
       app: aftestapp
@@ -15,6 +15,6 @@ spec:
     spec:
       containers:
         - name: aftestapp-container
-          image: stacksimplify/kubenginx:1.0.0
+          image: stacksimplify/kubenginx:3.0.0
           ports:
             - containerPort: 80
