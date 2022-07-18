@@ -20,7 +20,7 @@ spec:
     spec:
       containers:
         - name: aftestapp-container
-          image: nginx:1.20.2
+          image: nginx:1.23.0
           lifecycle:
             postStart:
               exec:
@@ -28,6 +28,11 @@ spec:
             preStop:
               exec:
                 command: ["/bin/sh","-c","nginx -s quit; while killall -0 nginx; do sleep 1; done"]
+          readinessProbe:
+            tcpSocket:
+              port: 80
+            initialDelaySeconds: 5
+            periodSeconds: 10
           ports:
             - containerPort: 80
           resources:
