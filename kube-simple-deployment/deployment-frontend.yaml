@@ -18,6 +18,18 @@ spec:
     spec:
       containers:
         - name: aftest-frontend-nginx
-          image: stacksimplify/kube-frontend-nginx:1.0.0
+          image: nginx
           ports:
             - containerPort: 80
+          volumeMounts:
+            - name: aftest-configmap-frontend
+              mountPath: /etc/nginx/nginx.conf
+              subPath: nginx.conf
+              readOnly: true
+      volumes:
+      - name: aftest-configmap-frontend
+        configMap:
+          name: aftest-configmap-frontend
+          items:
+            - key: nginx.conf
+              path: nginx.conf
