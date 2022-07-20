@@ -18,6 +18,6 @@ spec:
     spec:
       containers:
         - name: aftest-backend-container
-          image: stacksimlify/kube-helloworld:1.0.0
+          image: stacksimplify/kube-helloworld:1.0.0
           ports:
             - containerPort: 8080
