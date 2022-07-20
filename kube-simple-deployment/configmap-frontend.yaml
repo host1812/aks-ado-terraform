@@ -5,17 +5,16 @@ metadata:
 data:
   nginx.conf: |
     user nginx;
-    worker_processes  1;
+    worker_processes 1;
     events {
-      worker_connections  10240;
+      worker_connections 10240;
     }
     http {
       server {
           listen       80;
           server_name  localhost;
           location / {
-            root   html;
-            index  index.html index.htm;
+            proxy_pass http://aftest-backend-service:8080;
         }
       }
     }
