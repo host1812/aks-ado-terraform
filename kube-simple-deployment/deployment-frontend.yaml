@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: aftest-deployment-frontend
+  labels:
+    app: aftest-frontend
+    tier: frontend
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: aftest-frontend
+  template:
+    metadata:
+      labels:
+        app: aftest-frontend
+        tier: frontend
+    spec:
+      containers:
+        - name: aftest-frontend-nginx
+          image: stacksimplify/kube-frontend-nginx:1.0.0
+          ports:
+            - containerPort: 80
