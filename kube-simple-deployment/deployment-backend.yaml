@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: aftest-deployment-backend
+  labels:
+    app: aftest-backend
+    tier: backend
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: aftest-backend
+  template:
+    metadata:
+      labels:
+        app: aftest-backend
+        tier: backend
+    spec:
+      containers:
+        - name: aftest-backend-container
+          image: stacksimlify/kube-helloworld:1.0.0
+          ports:
+            - containerPort: 8080

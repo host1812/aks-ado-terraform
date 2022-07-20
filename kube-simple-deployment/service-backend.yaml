@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: aftest-backend-service
+  labels:
+    app: aftest-backend
+    tier: backend
+spec:
+  type: ClusterIP
+  selector:
+    app: aftest-backend
+  ports:
+    - port: 8080
+      targetPort: 8080
