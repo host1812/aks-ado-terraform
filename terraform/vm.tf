@@ -10,7 +10,7 @@ resource "azurerm_linux_virtual_machine" "af-vm" {
 
   admin_ssh_key {
     username   = "adminuser"
-    public_key = file("~/.ssh/host1812_azure_vms.pub")
+    public_key = file("~/.ssh/host1812_terraform_vms.pub")
   }
 
   os_disk {
@@ -20,8 +20,9 @@ resource "azurerm_linux_virtual_machine" "af-vm" {
 
   source_image_reference {
     publisher = "Canonical"
-    offer     = "UbuntuServer"
-    sku       = "20.04-LTS"
+    offer     = "0001-com-ubuntu-server-focal"
+    sku       = "20_04-lts"
     version   = "latest"
   }
+
 }
