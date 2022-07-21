@@ -21,5 +21,6 @@ resource "azurerm_network_interface" "af-nic" {
     name                          = "internal"
     subnet_id                     = azurerm_subnet.af-vnet-subnet.id
     private_ip_address_allocation = "Dynamic"
+    public_ip_address_id          = azurerm_public_ip.af-vm-pip.id
   }
 }
