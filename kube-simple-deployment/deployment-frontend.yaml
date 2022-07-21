@@ -6,7 +6,7 @@ metadata:
     app: aftest-frontend
     tier: frontend
 spec:
-  replicas: 3
+  replicas: 10
   selector:
     matchLabels:
       app: aftest-frontend
@@ -18,7 +18,7 @@ spec:
     spec:
       containers:
         - name: aftest-frontend-nginx
-          image: nginx
+          image: nginx:1.19.10
           ports:
             - containerPort: 80
           volumeMounts:
