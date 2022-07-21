@@ -9,7 +9,7 @@ resource "azurerm_linux_virtual_machine" "af-vm" {
   ]
 
   admin_ssh_key {
-    username   = "adminuser"
+    username   = "host1812"
     public_key = file("~/.ssh/host1812_terraform_vms.pub")
   }
 
