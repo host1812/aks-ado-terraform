@@ -3,10 +3,13 @@ resource "azurerm_linux_virtual_machine" "af-vm" {
   resource_group_name = azurerm_resource_group.rg.name
   location            = azurerm_resource_group.rg.location
   size                = "Standard_F2"
-  admin_username      = "adminuser"
+  admin_username      = "host1812"
+
   network_interface_ids = [
     azurerm_network_interface.af-nic.id,
   ]
+
+  custom_data = base64encode(templatefile("./scripts/dev-vm-cloud-init.yaml"))
 
   admin_ssh_key {
     username   = "host1812"
@@ -24,5 +27,4 @@ resource "azurerm_linux_virtual_machine" "af-vm" {
     sku       = "20_04-lts"
     version   = "latest"
   }
-
 }
