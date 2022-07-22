@@ -1,0 +1,5 @@
+#cloud-config
+write_files:
+  - owner: root:root
+    path: /tmp/test-cloud-init-here
+    permissions: '0755'
