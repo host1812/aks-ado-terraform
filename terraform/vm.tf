@@ -2,7 +2,7 @@ resource "azurerm_linux_virtual_machine" "af-vm" {
   name                = "af-vm"
   resource_group_name = azurerm_resource_group.rg.name
   location            = azurerm_resource_group.rg.location
-  size                = "Standard_F2"
+  size                = "Standard_B2s"
   admin_username      = "host1812"
 
   network_interface_ids = [
