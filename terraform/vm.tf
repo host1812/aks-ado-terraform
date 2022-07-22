@@ -9,7 +9,7 @@ resource "azurerm_linux_virtual_machine" "af-vm" {
     azurerm_network_interface.af-nic.id,
   ]
 
-  custom_data = base64encode(templatefile("./scripts/dev-vm-cloud-init.yaml"))
+  custom_data = base64encode(file("./scripts/dev-vm-cloud-init.yaml"))
 
   admin_ssh_key {
     username   = "host1812"
