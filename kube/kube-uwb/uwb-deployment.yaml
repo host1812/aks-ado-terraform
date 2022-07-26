@@ -1,0 +1,37 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: af-uwb-deployment
+  labels:
+    app: uwb
+spec:
+  replicas:
+  selector:
+    matchLabels:
+      app: uwb
+  template:
+    metadata:
+      labels:
+        app: uwb
+    spec:
+      initContainers:
+        - name: init-db
+          image: busybox:1.31
+          command: ['sh', '-c', 'echo -e "checking"; while ! nc -z af-mysql-service 3306; printf "-" ; done; echo -e "we are ready"']
+      containers:
+        - name: uwb
+          image: stacksimplify/kube-usermgmt-webapp:1.0.0-MySQLDB
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 8000
+          env:
+            - name: DB_HOSTNAME
+              value: af-mysql-service
+            - name: DB_PORT
+              value: 3306
+            - name: DB_NAME
+              value: webappdb
+            - name: DB_USERNAME
+              value: root
+            - name: DB_PASSWORD
+              value: dbpassword11
