@@ -35,4 +35,7 @@ spec:
             - name: DB_USERNAME
               value: "host1812@af-db0.mysql.database.azure.com"
             - name: DB_PASSWORD
-              value: "testtest1!"
+              valueFrom:
+                secretKeyRef:
+                  name: af-mysql-password
+                  key: db-password
