@@ -33,6 +33,6 @@ spec:
             - name: DB_NAME
               value: "webappdb"
             - name: DB_USERNAME
-              value: "host1812"
+              value: "host1812@af-db0.mysql.database.azure.com"
             - name: DB_PASSWORD
               value: "testtest1!"
