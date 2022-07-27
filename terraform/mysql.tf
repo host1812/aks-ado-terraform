@@ -18,3 +18,11 @@ resource "azurerm_mysql_server" "mysql" {
   ssl_enforcement_enabled           = false
   ssl_minimal_tls_version_enforced  = "TLSEnforcementDisabled"
 }
+
+resource "azurerm_mysql_firewall_rule" "mysql-fw" {
+  name                = "internal"
+  resource_group_name = azurerm_resource_group.rg.name
+  server_name         = azurerm_mysql_server.mysql.name
+  start_ip_address    = "0.0.0.0"
+  end_ip_address      = "0.0.0.0"
+}
