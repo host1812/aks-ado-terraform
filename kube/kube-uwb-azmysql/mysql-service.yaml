@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: af-mysql-service
+spec:
+  type: ClusterIP
+  selector:
+    app: af-mysql
+  ports:
+    - port: 3306
