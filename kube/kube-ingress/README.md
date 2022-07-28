@@ -3,7 +3,7 @@
 Install ingress using `helm`:
 
 ```bash
-helm install ingress-nginx ingress-nginx/ingress-nginx \
+helm upgrade --install ingress-nginx ingress-nginx/ingress-nginx \
     --namespace ingress \
     --set controller.replicaCount=2 \
     --set controller.nodeSelector."kubernetes\.io/os"=linux \
