@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: af-nginx-deployment
+  labels:
+    app: af-nginx
+spec:
+  replicas: 4
+  selector:
+    matchLabels:
+      app: af-nginx
+  template:
+    metadata:
+      labels:
+        app: af-nginx
+    spec:
+      containers:
+        - name: af-nginx
+          image: nginx
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 80
+          volumeMounts:
+            - name: af-az-file-share
+              mountPath: /usr/share/nginx/html/app1
+      volumes:
+        - name: af-az-file-share
+          persistentVolumeClaim:
+            claimName: af-az-file-pvc
