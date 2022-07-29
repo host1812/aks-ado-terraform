@@ -5,7 +5,7 @@ metadata:
   labels:
     app: uwb
 spec:
-  replicas:
+  replicas: 2
   selector:
     matchLabels:
       app: uwb

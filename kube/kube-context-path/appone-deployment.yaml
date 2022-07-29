@@ -3,12 +3,12 @@ kind: Deployment
 metadata:
   name: af-appone-deployment
 spec:
-  replicas: 10
+  replicas: 2
   revisionHistoryLimit: 6
   strategy:
     rollingUpdate:
-      maxSurge: 3
-      maxUnavailable: 2
+      maxSurge: 1
+      maxUnavailable: 1
   selector:
     matchLabels:
       app: af-appone
