@@ -18,6 +18,15 @@ spec:
         - name: init-db
           image: busybox:1.31
           command: ['sh', '-c', 'echo -e "checking"; while ! nc -z af-az-mysql-service 3306; do echo "$(date): not yet connected..." ; sleep 1; done; echo -e "we are ready"']
+        - name: init-create-webappdb
+          image: mysql:5.7.22
+          command:
+            - mysql
+          args:
+            - "-haf-az-mysql-service"
+            - "-uhost1812@af-db0.mysql.database.azure.com"
+            - "-ptesttest1!"
+            - -e CREATE DATABASE [IF NOT EXISTS] webappdb;
       containers:
         - name: uwb
           image: stacksimplify/kube-usermgmt-webapp:1.0.0-MySQLDB

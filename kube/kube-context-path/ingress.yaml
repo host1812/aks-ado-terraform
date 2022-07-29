@@ -5,6 +5,11 @@ metadata:
   annotations:
     kubernetes.io/ingress.class: nginx
 spec:
+  defaultBackend:
+    service:
+      name: af-uwb-service
+      port:
+        number: 80
   rules:
     - http:
         paths:
@@ -22,10 +27,10 @@ spec:
                 name: af-apptwo-service
                 port: 
                   number: 80
-          - path: /app1
+          - path: /app3
             pathType: Prefix
             backend:
               service:
                 name: af-uwb-service
                 port: 
-                  number: 8080
+                  number: 80
