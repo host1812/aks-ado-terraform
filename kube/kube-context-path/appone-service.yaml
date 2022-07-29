@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: af-appone-service
+  labels:
+    app: af-appone
+spec:
+  type: ClusterIP
+  selector:
+    app: af-appone
+  ports:
+    - port: 80
+      targetPort: 80

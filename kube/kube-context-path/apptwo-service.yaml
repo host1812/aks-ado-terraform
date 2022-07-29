@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: af-apptwo-service
+  labels:
+    app: af-apptwo
+spec:
+  type: ClusterIP
+  selector:
+    app: af-apptwo
+  ports:
+    - port: 80
+      targetPort: 80
