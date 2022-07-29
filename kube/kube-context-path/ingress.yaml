@@ -1,0 +1,31 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: af-cpr-ingress
+  annotations:
+    kubernetes.io/ingress.class: nginx
+spec:
+  rules:
+    - http:
+        paths:
+          - path: /app1
+            pathType: Prefix
+            backend:
+              service:
+                name: af-appone-service
+                port: 
+                  number: 80
+          - path: /app2
+            pathType: Prefix
+            backend:
+              service:
+                name: af-apptwo-service
+                port: 
+                  number: 80
+          - path: /app1
+            pathType: Prefix
+            backend:
+              service:
+                name: af-uwb-service
+                port: 
+                  number: 8080
