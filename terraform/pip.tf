@@ -10,4 +10,5 @@ resource "azurerm_public_ip" "af-aks-ingress-pip" {
   resource_group_name = azurerm_kubernetes_cluster.aks.node_resource_group
   location            = azurerm_resource_group.rg.location
   allocation_method   = "Static"
+  sku                 = "Standard"
 }
